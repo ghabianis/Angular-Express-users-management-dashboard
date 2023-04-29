@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth');
 
-const postsRoutes = require('./routes/posts');
+const adminManagementRoutes = require('./routes/adminManagement');
 
 const errorController = require('./controllers/error');
 
@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 app.use('/auth', authRoutes);
 
-app.use('/post', postsRoutes);
+app.use('/admin', adminManagementRoutes);
 
 app.use(errorController.get404);
 
