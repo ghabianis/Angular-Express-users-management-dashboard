@@ -1,17 +1,10 @@
-<mat-toolbar color="accent">
+<mat-toolbar >
   <span>
     <a routerLink="/">
-      <span>Social Posts</span>
+      <span>Admin Dashboard</span>
     </a>
   </span>
   <span>
-    <a
-      *ngIf="isAuthenticated"
-      routerLinkActive="active-link"
-      routerLink="/posts"
-    >
-      <span>Posts</span>
-    </a>
     <a
       *ngIf="!isAuthenticated"
       routerLinkActive="active-link"
@@ -25,7 +18,8 @@
       routerLinkActive="active-link"
       routerLink="/login"
     >
-      <span>Logout</span>
+    <i class="fa fa-sign-out" aria-hidden="true"></i>
+
     </a>
     <a
       *ngIf="!isAuthenticated"

@@ -20,8 +20,11 @@ import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from "./components/home/home.component";
 import { PostsComponent } from "./components/posts/posts.component";
 import { CreatePostComponent } from "./components/create-post/create-post.component";
+import {MatSelectModule} from '@angular/material/select';
 
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
     HomeComponent,
     PostsComponent,
     CreatePostComponent,
+    CanvasJSChart
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,7 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
     MatToolbarModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSelectModule
   ],
   providers: [
     {
