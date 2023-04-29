@@ -9,6 +9,9 @@ import {FormControl} from '@angular/forms';
 export class HomeComponent implements AfterViewInit {
   months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 
+  date = new Date();
+   formattedDate = `${this.date.getFullYear().toString().substr(-2)}/${(this.date.getMonth() + 1).toString().padStart(2, '0')}/${this.date.getDate().toString().padStart(2, '0')}`;
+
   ngAfterViewInit() {
     const chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
