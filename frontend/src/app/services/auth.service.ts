@@ -14,7 +14,10 @@ import { ErrorHandlerService } from "./error-handler.service";
 export class AuthService {
   private url = "http://localhost:3000/auth";
 
-  isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
+  isUserLoggedIn$ = new BehaviorSubject<boolean>(
+    JSON.parse(localStorage.getItem("isUserLoggedIn") || "false")
+  );
+
   userId: Pick<User, "id">;
 
   httpOptions: { headers: HttpHeaders } = {
@@ -26,6 +29,11 @@ export class AuthService {
     private errorHandlerService: ErrorHandlerService,
     private router: Router
   ) {}
+
+  private setIsUserLoggedIn(value: boolean) {
+    this.isUserLoggedIn$.next(value);
+    localStorage.setItem("isUserLoggedIn", JSON.stringify(value));
+  }
 
   signup(user: Omit<User, "id">): Observable<User> {
     return this.http
@@ -50,7 +58,7 @@ export class AuthService {
         tap((tokenObject: { token: string; userId: Pick<User, "id"> }) => {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
-          this.isUserLoggedIn$.next(true);
+          this.setIsUserLoggedIn(true); // set isUserLoggedIn$ to true
           this.router.navigate(["posts"]);
         }),
         catchError(
