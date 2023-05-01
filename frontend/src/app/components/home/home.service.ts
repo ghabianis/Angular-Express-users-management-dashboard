@@ -13,9 +13,15 @@ export class HomeService {
   }
 
 
+  getAllVisitersForchart(){
+    return this.httpClient.get('http://localhost:3000/admin/getalldataforchart/');
+  }
+
   getAllVisiters(){
     return this.httpClient.get('http://localhost:3000/admin/getAllData/');
   }
+
+  
 
   getAllVisits(){
     return this.httpClient.get('http://localhost:3000/admin/getallvisits/');

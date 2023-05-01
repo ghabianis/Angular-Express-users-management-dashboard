@@ -115,7 +115,42 @@ exports.getAllData = async (req, res) => {
   }
 }
 
+exports.getAllDataForChart = async (req, res) => {
+  try {
+    const absQuery = `SELECT
+    DATE_FORMAT(dates.month, '%M') AS month,
+    COUNT(DISTINCT u.id) AS nbusers,
+    COUNT(DISTINCT v.id) AS nbvisit,
+    COUNT(DISTINCT a.id) AS nbabs
+  FROM
+    (SELECT DISTINCT DATE_FORMAT(createdat, '%Y-%m-01') AS month FROM users
+     UNION
+     SELECT DISTINCT DATE_FORMAT(date_arrivee, '%Y-%m-01') AS month FROM visite
+     UNION
+     SELECT DISTINCT DATE_FORMAT(date_absence, '%Y-%m-01') AS month FROM absence) dates
+  LEFT JOIN
+    users u ON DATE_FORMAT(u.createdat, '%Y-%m-01') = dates.month
+  LEFT JOIN
+    visite v ON DATE_FORMAT(v.date_arrivee, '%Y-%m-01') = dates.month
+  LEFT JOIN
+    absence a ON DATE_FORMAT(a.date_absence, '%Y-%m-01') = dates.month
+  GROUP BY
+    dates.month`;
+    const result = await db.query(absQuery);
 
+    const alldata = result[0].map((alldata) => ({
+      nbusers:alldata.nbusers,
+      nbvisit: alldata.nbvisit,
+      nbabs: alldata.nbabs,
+      month: alldata.month,
+
+    }));
+    return res.json({...alldata});
+
+  } catch (err) {
+    res.status(500).send('Server error');
+  }
+}
 
 
 exports.postPost = async (req, res, next) => {

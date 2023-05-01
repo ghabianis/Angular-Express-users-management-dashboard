@@ -9,10 +9,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of this.visit">
-        <td>{{item.data.userscount.nbuser}}</td>
-        <td>{{item.data.allabsences.nbtotal}}</td>
-        <td>{{item.data.visitcount.nbvisit}}</td>
+      <tr *ngFor="let item of this.allRecords">
+        <td>{{item['userscount'].nbuser}}</td>
+        <td>{{item['allabsences'].nbtotal}}</td>
+        <td>{{item['visitcount'].nbvisit}}</td>
         <td>0</td>
       </tr>
     </tbody>
@@ -33,7 +33,7 @@
       <option value="November">November</option>
       <option value="December">December</option>
     </select>
-    <i class="fa fa-refresh fa-spin" style="font-size:24px; margin-left: 10px;" (click)="refreshChart()"></i>
+    <i class="fa fa-refresh" style="font-size:24px; margin-left: 10px;" (click)="refreshChart()"></i>
   </div>
   
   <div id="chartContainer" style="height: 370px; width: 100%;"></div>

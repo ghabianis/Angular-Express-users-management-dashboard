@@ -39,26 +39,41 @@ export class HomeComponent implements AfterViewInit, OnInit {
   chartData: any[] = [];
 
   monthsFromApi: any[] = []
+  allRecords : any[] = []
   ngOnInit(): void {
+    this.getAllVisiters()
 
-    this.httpCLient.get('http://localhost:3000/admin/getAllData/').subscribe(data => {
+    this.httpCLient.get('http://localhost:3000/admin/getalldataforchart/').subscribe(data => {
 
       this.visit.push(data);
+      
+      
+      for (const key in data) {
+        const element = data[key];
+        const newData = {
+          month: element.month,
+          EffectifTotal: element.nbusers,
+          NbrAbsense: element.nbabs,
+          Visiteur: element.nbvisit,
+        };
+        this.chartData.push(newData);
+      }
+
 
 
       // Initialize the chart data
 
-      this.visit.forEach((element) => {
-        element.data.monthly.forEach((monthData) => {
-          const newData = {
-            month: monthData.monthabs,
-            EffectifTotal: element.data.userscount.nbuser,
-            NbrAbsense: element.data.allabsences.nbtotal,
-            Visiteur: element.data.visitcount.nbvisit,
-          };
-          this.chartData.push(newData);
-        });
-      });
+      // this.visit.forEach((element) => {
+      //   element.data.monthly.forEach((monthData) => {
+      //     const newData = {
+      //       month: monthData.monthabs,
+      //       EffectifTotal: element.data.userscount.nbuser,
+      //       NbrAbsense: element.data.allabsences.nbtotal,
+      //       Visiteur: element.data.visitcount.nbvisit,
+      //     };
+      //     this.chartData.push(newData);
+      //   });
+      // });
 
 
       this.formattedData = this.chartData
@@ -72,8 +87,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
           },
         }));
 
-
-      console.log('ssssssss', this.chartData)
 
 
       // this.monthsFromApi.forEach((element,index)=>{
@@ -183,6 +196,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
         NbrAbsense: item.NbrAbsense,
         Visiteur: item.Visiteur,
       },
+      
     }));
 
     // Update the chart data
@@ -265,6 +279,20 @@ export class HomeComponent implements AfterViewInit, OnInit {
       });
     }
   }
+  allUsersCount: number;
+  allAbsencesCount: number;
+  allVisitsCount: number;
 
+  getAllVisiters(){
+    this.homeService.getAllVisiters().subscribe((data)=>{
+      this.allRecords.push({...data['data']})
+
+      // console.log("ssssssss",this.allRecords[0].allabsences.nbtotal)
+
+      for(let item of this.allRecords){
+        console.log(item['allabsences'])
+      }
+    })
+  }
 
 }

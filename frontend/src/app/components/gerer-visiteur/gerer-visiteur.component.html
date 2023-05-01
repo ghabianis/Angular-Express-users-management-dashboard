@@ -42,32 +42,32 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form (submit)="submitData(formData)">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Nom</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter firstname" name="nom" [(ngModel)]="formData.nom">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Prenom</label>
-                      <input type="text" class="form-control" name="prenom" id="exampleInputPassword1" placeholder="Prenom"
-                        [(ngModel)]="formData.prenom">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Date D'absences</label>
-                      <input type="date" class="form-control" name="date_arrivee" id="exampleInputPassword1" placeholder="Absence Date"
-                        [(ngModel)]="formData.date_arrivee">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Raison</label>
-                      <input type="text" class="form-control" name="raison" id="exampleInputPassword1" placeholder="Raison"
-                        [(ngModel)]="formData.raison">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </form>
+               <form (submit)="submitData(formData)">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nom</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+      placeholder="Enter firstname" name="nom" [(ngModel)]="formData.nom">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Prenom</label>
+    <input type="text" class="form-control" name="prenom" id="exampleInputPassword1" placeholder="Prenom"
+      [(ngModel)]="formData.prenom">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Date D'absences</label>
+    <input type="date" class="form-control" name="date_arrivee" id="exampleInputPassword1" placeholder="Absence Date"
+      [(ngModel)]="formData.date_arrivee">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Raison</label>
+    <input type="text" class="form-control" name="raison" id="exampleInputPassword1" placeholder="Raison"
+      [(ngModel)]="formData.raison">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+  </div>
+</form>
             </div>
          
         </div>
