@@ -9,25 +9,32 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>500</td>
-        <td>20</td>
-        <td>36</td>
+      <tr *ngFor="let item of this.visit">
+        <td>{{item.data.userscount.nbuser}}</td>
+        <td>{{item.data.allabsences.nbtotal}}</td>
+        <td>{{item.data.visitcount.nbvisit}}</td>
         <td>0</td>
       </tr>
     </tbody>
   </table>
-  <div >
-    <mat-form-field appearance="fill" style="margin-left: 82%; margin-top: 3%;float: right; margin-bottom: 5%;">
-      <mat-label>Choose an option</mat-label>
-      <select matNativeControl>
-        <option value="" selected></option>
-        <option value="volvo">Volvo</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
-    </mat-form-field>
-  </div>
 
-<!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
-<div id="chartContainer" style="height: 370px; width: 100%;margin-top: 10%;"></div>
+  <div style="display: flex; align-items: center;margin-top: 4%;">
+    <select id="monthFilter" class="form-select" aria-label="Default select example">
+      <option value="January">January</option>
+      <option value="February">February</option>
+      <option value="March">March</option>
+      <option value="April">April</option>
+      <option value="May">May</option>
+      <option value="June">June</option>
+      <option value="July">July</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <option value="November">November</option>
+      <option value="December">December</option>
+    </select>
+    <i class="fa fa-refresh fa-spin" style="font-size:24px; margin-left: 10px;" (click)="refreshChart()"></i>
+  </div>
+  
+  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+

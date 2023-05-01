@@ -1,0 +1,75 @@
+<h2 style="float: right; font-size: 25px;color:#337ab7;">Date : {{formattedDate}}</h2>
+<button style="font-size:24px;margin-bottom: 4%;" class="btn btn-success" data-toggle="modal"
+    data-target="#exampleModal">Add Visiteurs<i class="fa fa-plus"></i></button>
+
+<table class="table" data-auto-refresh="True" id="tab">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Date D'absences</th>
+            <th scope="col">Raison</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of this.data">
+            <td>{{item.id}}</td>
+            <td>{{item.nom}}</td>
+            <td>{{item.prenom}}</td>
+            <td>{{item.date_arrivee}}</td>
+            <td>{{item.raison}}</td>
+            <td>
+                <button class="btn btn-danger btn-circle btn-sm" (click)="deleteVisiteur(item.id)"><i class="fa fa-trash-o"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Visits</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (submit)="submitData(formData)">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Nom</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter firstname" name="nom" [(ngModel)]="formData.nom">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Prenom</label>
+                      <input type="text" class="form-control" name="prenom" id="exampleInputPassword1" placeholder="Prenom"
+                        [(ngModel)]="formData.prenom">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Date D'absences</label>
+                      <input type="date" class="form-control" name="date_arrivee" id="exampleInputPassword1" placeholder="Absence Date"
+                        [(ngModel)]="formData.date_arrivee">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Raison</label>
+                      <input type="text" class="form-control" name="raison" id="exampleInputPassword1" placeholder="Raison"
+                        [(ngModel)]="formData.raison">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </form>
+            </div>
+         
+        </div>
+    </div>
+</div>

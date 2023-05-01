@@ -59,7 +59,7 @@ export class AuthService {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
           this.setIsUserLoggedIn(true); // set isUserLoggedIn$ to true
-          this.router.navigate(["posts"]);
+          this.router.navigate(["/"]);
         }),
         catchError(
           this.errorHandlerService.handleError<{

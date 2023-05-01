@@ -4,6 +4,15 @@
       <span>Admin Dashboard</span>
     </a>
   </span>
+
+  <span style="display: flex;margin-right: 10%;">
+    <a routerLink="/" *ngIf="isAuthenticated">
+      <span>Home</span>
+    </a>
+    <a routerLink="/Visitis" *ngIf="isAuthenticated">
+      <span>Visits</span>
+    </a>
+  </span>
   <span>
     <a
       *ngIf="!isAuthenticated"

@@ -1,3 +1,4 @@
+<h1>SignUp</h1>
 <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
   <mat-form-field>
     <mat-label>First name</mat-label>
@@ -17,7 +18,7 @@
     />
   </mat-form-field>
   <button
-    color="accent"
+    style="background-color: #337ab7;color: white;"
     [disabled]="!signupForm.valid"
     mat-raised-button
     type="submit"

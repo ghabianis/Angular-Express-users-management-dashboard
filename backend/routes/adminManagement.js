@@ -10,11 +10,21 @@ const router = express.Router();
 
 router.get('/', auth, adminManagementController.fetchAll);
 router.get('/absences', adminManagementController.absences);
+router.get('/getAllData', adminManagementController.getAllData);
+router.get('/allabsences', adminManagementController.allabsences);
 router.get('/userscount', adminManagementController.userscount);
 router.get('/visitcount', adminManagementController.visitcount);
 router.get('/absences/monthly',adminManagementController.monthly);
+router.get('/getallvisits',adminManagementController.getallvisits);
+router.delete('/deletevisit/:id',adminManagementController.deleteVisit);
 
 
+router.post('/createvisit', [
+  body('nom'),
+  body('prenom'),
+  body('date_arrivee'),
+  body('raison'),
+],adminManagementController.createvisit);
 router.post(
   '/',
   [

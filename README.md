@@ -2,11 +2,8 @@
 
 ## Angular, Node, and MySQL
 
+
 1. Navigate to backend/config/config.json and change the password to your MySQL password.
-
-```json
-
-```
 
 Note: For development purposes the host is localhost but this will need to be updated if you decide to deploy the application. By Default, MySQL gives the user 'root' with all privileges. You can simply change this to another user if desired. In this application we named our database 'posts', however, if you went with a different name this will need to be changed.
 
@@ -16,3 +13,6 @@ Note: For development purposes the host is localhost but this will need to be up
 5. cd ../frontend
 6. \$ npm install
 7. \$ npm start
+
+credit @GhabiAnis backend developer and software engineer
+

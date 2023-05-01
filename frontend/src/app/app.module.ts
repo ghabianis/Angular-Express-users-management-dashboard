@@ -24,6 +24,10 @@ import {MatSelectModule} from '@angular/material/select';
 
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+import { FormsModule } from '@angular/forms';
+import { GererVisiteurComponent } from './components/gerer-visiteur/gerer-visiteur.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -35,7 +39,9 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     HomeComponent,
     PostsComponent,
     CreatePostComponent,
-    CanvasJSChart
+    CanvasJSChart,
+    GererVisiteurComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     MatToolbarModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
   providers: [
     {
